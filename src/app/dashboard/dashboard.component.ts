@@ -27,13 +27,15 @@ export class DashboardComponent implements OnInit {
 
     let resolvedData: Book[] | BookTrackerError = this.route.snapshot.data['resolvedBooks'];
 
+    // ----------- GREAT DESIGN PATTERN When using RESOLVERS 
     if (resolvedData instanceof BookTrackerError) {
       console.log(`Dashboard component error: ${resolvedData.friendlyMessage}`);
     }
     else {
       this.allBooks = resolvedData;
     }    
-
+   // ----------- GREAT DESIGN PATTERN When using RESOLVERS 
+    
     this.allReaders = this.dataService.getAllReaders();
     this.mostPopularBook = this.dataService.mostPopularBook;
 
