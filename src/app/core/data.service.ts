@@ -88,6 +88,8 @@ export class DataService {
 
   // URL  e.g. /api/books/5
   updateBook(updatedBook: Book): Observable<void> {
+  // Note the <void>, because we are not expecting any data back from the .put() api
+  // of course we will get http status pf 204 (meaning no content)... but that is not considered data
     return this.http.put<void>(`/api/books/${updatedBook.bookID}`, updatedBook, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -97,6 +99,8 @@ export class DataService {
 
   // URL  e.g. api/books/5
   deleteBook(bookID: number): Observable<void> {
+  // Note the <void>, because we are not expecting any data back from the .delete() api
+  // of course we will get http status pf 204 (meaning no content)... but that is not considered data
     return this.http.delete<void>(`/api/books/${bookID}`);
   }
   
