@@ -79,6 +79,9 @@ export class DataService {
 
   // URL  /api/books
   addBook(newBook: Book): Observable<Book> {
+    // You might think that why are we expecting a book back ... see   (<Book>)... , when we are in fact adding a book.
+    // well, according to REST ... after a resource is SUCCESSFULLY added the added resource's location and the resource should be returned
+    // back to the caller together with a http status code of 201 (meaning created)
     return this.http.post<Book>('/api/books', newBook, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
